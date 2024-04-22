@@ -19,7 +19,13 @@ namespace Demo01.api.Controllers
 
         public async Task<IActionResult> getCustomer(int OrderId)
         {
+
             var response = await _CustomerRepository.GetCustomerNameAddress(OrderId);
+
+            if(response == null)
+            {
+                return Ok("There is no Customer for given order id");
+            }
 
             return Ok(response);
         }

@@ -5,6 +5,7 @@ using Demo01.api.DTO.ProductsDTO;
 using Demo01.api.Services.Data.Context;
 using Demo01.api.Services.Data.Repository;
 using System.Data;
+using System.Reflection.Metadata;
 
 namespace Demo01.api.Application.Repository
 {
@@ -24,7 +25,9 @@ namespace Demo01.api.Application.Repository
 
             var connection = _context.CreateConnection();
 
-            var products = await connection.QueryAsync<Products>(procedureName, orderId, commandType: CommandType.StoredProcedure);
+            var parameters = new { orderId = orderId };
+
+            var products = await connection.QueryAsync<Products>(procedureName, parameters, commandType: CommandType.StoredProcedure);
 
             if (!products.Any() || products == null)
             {

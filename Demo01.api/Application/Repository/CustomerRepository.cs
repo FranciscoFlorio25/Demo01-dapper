@@ -22,14 +22,16 @@ namespace Demo01.api.Application.Repository
 
             var connection = _context.CreateConnection();
 
-            var customer = await connection.QueryFirstOrDefaultAsync<Customer>(procedureName, orderId, commandType: CommandType.StoredProcedure);
+            var parameters = new { nroOrden = orderId };
+
+            var customer = await connection.QueryFirstOrDefaultAsync<Customer>(procedureName, parameters, commandType: CommandType.StoredProcedure);
 
             if (customer == null)
             {
                 return null;
             }
 
-            return new CustomerDTO(customer.CustomerName, customer.Address);
+            return new CustomerDTO(customer.CompanyName, customer.Address);
         }
 
     }

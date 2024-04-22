@@ -2,12 +2,12 @@
 {
     public class Customer
     {
-        public string CustomerName { get; set; }
+        public string CompanyName { get; set; }
         public string Address { get; set; }
 
-        public Customer(string customerName, string address)
+        public Customer(string companyName, string address)
         {
-            CustomerName = customerName;
+            CompanyName = companyName;
             Address = address;
         }
     }

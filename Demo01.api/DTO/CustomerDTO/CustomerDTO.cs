@@ -2,6 +2,6 @@
 
 namespace Demo01.api.DTO.CustomerDTO
 {
-    public record CustomerDTO (string customerName, string address);
+    public record CustomerDTO (string CompanyName, string address);
 
 }

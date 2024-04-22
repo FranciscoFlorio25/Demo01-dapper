@@ -21,6 +21,11 @@ namespace Demo01.api.Controllers
         {
             var response = await _ProductRepository.GetProducts(OrderId);
 
+            if(response == null)
+            {
+                return Ok("There is no products for the given order id");
+            }
+
             return Ok(response);
         }
     }
